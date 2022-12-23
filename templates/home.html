@@ -1,0 +1,24 @@
+{% extends 'base.html '%}
+
+{% block content %}
+<h1>Invoice Dashboard</h1>
+<p>
+    <a href="{% url 'upload' %}">Upload New</a>
+</p>
+<table>
+    <thead>
+        <tr>
+            <td>Invoice No.</td>
+            <td>Document</td>
+        </tr>
+    </thead>
+    <tbody>
+        {% for invoice in invoices %}
+        <tr>
+            <td>{{ invoice.invoice_number }}</td>
+            <td><a href="{% url 'download' invoice.id %}">Download</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock content %}
